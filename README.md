@@ -232,6 +232,110 @@ for result in results:
     print(f"Person: {result['person']}, Confidence: {result['confidence']:.3f}")
 ```
 
+## Web Application (Real-time Face Recognition)
+
+### Frontend Setup (Next.js)
+
+The project includes a Next.js web application for real-time face recognition using your webcam.
+
+#### Prerequisites
+```bash
+# Install Node.js 18+ from https://nodejs.org
+node --version  # Should be v18.0.0 or higher
+```
+
+#### Installation & Running
+
+```bash
+# Navigate to frontend directory
+cd nextjs-frontend
+
+# Install dependencies
+npm install
+# or
+yarn install
+
+# Start development server (Recommended)
+npm run dev
+# or
+yarn dev
+```
+
+The web app will be available at `http://localhost:3000`
+
+#### Backend API Setup
+
+The frontend requires the Python FastAPI backend running:
+
+```bash
+# In a separate terminal, navigate to backend directory
+cd python_backend
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Start the API server
+python app.py
+```
+
+The API will start at `http://localhost:8111`
+
+#### Using the Web Application
+
+1. **Start Backend**: Run `python app.py` in `python_backend/`
+2. **Start Frontend**: Run `npm run dev` in `nextjs-frontend/`
+3. **Open Browser**: Navigate to `http://localhost:3000`
+4. **Allow Camera**: Grant camera permissions when prompted
+5. **Adjust Settings**:
+   - Recognition Threshold: 0.3-0.5 (lower = more lenient)
+   - Update Interval: 1000ms recommended for balance
+
+#### Features
+
+- Real-time face detection using MTCNN
+- Live face recognition with FaceNet
+- Adjustable confidence threshold
+- Performance metrics (FPS, processing time)
+- Visual bounding boxes with student IDs
+- Multiple face detection support
+
+#### Production Build (Working in progress, might not work)
+
+```bash
+# Build for production 
+npm run build
+
+# Start production server
+npm start
+```
+
+#### Configuration
+
+Edit API endpoint in `app/page.tsx` if backend runs on different port:
+```typescript
+const response = await fetch('http://localhost:8111/detect-and-recognize', {
+  // ...
+});
+```
+
+#### Troubleshooting
+
+**Camera not working:**
+- Ensure browser has camera permissions
+- Try HTTPS or localhost only
+- Check if another app is using the camera
+
+**API connection failed:**
+- Verify backend is running on port 8111
+- Check CORS settings in `app.py`
+- Ensure no firewall blocking localhost
+
+**Low recognition accuracy:**
+- Adjust threshold (try 0.3-0.4 for more lenient matching)
+- Ensure good lighting on face
+- Face camera directly
+- Check if model was trained with similar conditions
+
 ## Hardware Requirements
 
 - **Minimum**: CPU with 8GB RAM
