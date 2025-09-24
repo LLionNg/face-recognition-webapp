@@ -1,0 +1,26 @@
+{
+  "name": "tonnam-human-detection",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --kill-others --kill-others-on-fail \"python python_backend/app.py\" \"next dev -p 6111\"",
+    "build": "next build --turbopack",
+    "start": "next start -p 6111",
+    "dev:frontend": "next dev -p 6111",
+    "dev:backend": "python python_backend/app.py"
+  },
+  "dependencies": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "next": "15.5.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@tailwindcss/postcss": "^4",
+    "tailwindcss": "^4"
+  }
+}
