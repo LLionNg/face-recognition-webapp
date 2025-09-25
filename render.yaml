@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: face-recognition-api
+    runtime: docker
+    dockerfilePath: ./python_backend/Dockerfile
+    dockerContext: ./python_backend
+    envVars:
+      - key: PORT
+        value: 8111
+      - key: MODEL_PATH
+        value: ../models/best_facenet_model.pt
+      - key: CONFIDENCE_THRESHOLD
+        value: 0.5
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: true
