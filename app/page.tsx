@@ -127,8 +127,10 @@ export default function FaceRecognitionPage() {
     try {
       const canvas = canvasRef.current;
       const imageData = canvas.toDataURL('image/jpeg', 0.8);
+
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8111';
       
-      const response = await fetch('http://localhost:8111/detect-and-recognize', {
+      const response = await fetch(`${API_URL}/detect-and-recognize`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
