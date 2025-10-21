@@ -71,7 +71,7 @@ python organize_photos.py --directory known_people_photos
 # Basic training
 python facenet_training.py --data_dir known_people_photos --output my_facenet_model.pt
 
-# Advanced options
+# Basic Hyper parameter option
 python facenet_training.py \
     --data_dir known_people_photos \
     --output my_facenet_model.pt \
